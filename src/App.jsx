@@ -5,6 +5,7 @@
 
 import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
+import cesaireImage from "../cesaire.jpg"
 
 const App = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
@@ -41,7 +42,7 @@ const App = () => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4">
+    <div className="landing-shell min-h-screen flex items-center justify-center px-4">
       {/* Animated background gradient that follows mouse */}
       <div
         className="fixed inset-0 pointer-events-none"
@@ -57,6 +58,12 @@ const App = () => {
         animate="visible"
         className="text-center max-w-4xl mx-auto"
       >
+        <motion.img
+          variants={itemVariants}
+          src={cesaireImage}
+          alt="Aime Cesaire Mugishawayo"
+          className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover mx-auto mb-6 ring-4 ring-white/70 shadow-xl"
+        />
         <motion.h1
           variants={itemVariants}
           className="text-6xl md:text-8xl font-bold mb-6"
@@ -79,6 +86,15 @@ const App = () => {
           style={{ color: "var(--color-text-light)" }}
         >
           Building intelligent systems, secure infrastructure, and resilient code
+        </motion.p>
+
+        <motion.p
+          variants={itemVariants}
+          className="text-base md:text-lg mb-10 max-w-3xl mx-auto"
+          style={{ color: "var(--color-text-light)" }}
+        >
+          Backstory: I started by solving reliability problems in real operations environments, then expanded into AI,
+          security, and systems engineering where software has to perform under pressure.
         </motion.p>
 
         <motion.div
@@ -106,7 +122,7 @@ const App = () => {
           </motion.a>
 
           <motion.a
-            href="/portfolio/other/resume.pdf"
+            href="/portfolio/other/Aime_Cesaire_resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="px-8 py-4 rounded-xl font-semibold text-lg"
@@ -126,6 +142,18 @@ const App = () => {
             Resume
           </motion.a>
         </motion.div>
+
+        <motion.a
+          variants={itemVariants}
+          href="https://timeundertensors.substack.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex mt-6 text-sm md:text-base"
+          style={{ color: "var(--color-text-light)" }}
+          whileHover={{ color: "var(--color-accent)" }}
+        >
+          Writing on Substack
+        </motion.a>
 
         <motion.div
           variants={itemVariants}
@@ -160,6 +188,17 @@ const App = () => {
           </motion.a>
         </motion.div>
       </motion.div>
+      <footer className="landing-footer">
+        <p>© 2026 Aime Cesaire Mugishawayo</p>
+        <div className="landing-footer__links">
+          <a href="https://timeundertensors.substack.com" target="_blank" rel="noopener noreferrer">
+            Substack
+          </a>
+          <a href="/portfolio/other/Aime_Cesaire_resume.pdf" target="_blank" rel="noopener noreferrer">
+            Resume
+          </a>
+        </div>
+      </footer>
     </div>
   )
 }
