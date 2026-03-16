@@ -235,6 +235,7 @@ const App = () => {
       <footer className="landing-footer">
         <p>© 2026 Aime Cesaire Mugishawayo</p>
         <div className="landing-footer__links">
+          <a href="/portfolio">Portfolio</a>
           <a href="https://timeundertensors.substack.com" target="_blank" rel="noopener noreferrer">
             Substack
           </a>
