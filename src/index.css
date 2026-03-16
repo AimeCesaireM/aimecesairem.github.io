@@ -71,20 +71,22 @@ body > * {
 
 .landing-shell {
   position: relative;
+  flex-direction: column;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
 }
 
 .landing-footer {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0.75rem;
-  display: grid;
-  gap: 0.25rem;
-  justify-items: center;
+  width: 100%;
+  margin-top: 3rem;
+  padding: 1.5rem 0 1rem;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
   color: var(--color-text-light);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
 }
 
 .landing-footer p {
@@ -93,7 +95,11 @@ body > * {
 
 .landing-footer__links {
   display: flex;
-  gap: 0.9rem;
+  gap: 1.25rem;
+}
+
+.landing-footer__links a {
+  font-weight: 500;
 }
 
 .backstory-timeline {

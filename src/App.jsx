@@ -126,21 +126,6 @@ const App = () => {
           Building intelligent systems, secure infrastructure, and resilient code
         </motion.p>
 
-        <motion.section variants={itemVariants} className="backstory-timeline" aria-label="Backstory timeline">
-          {backstoryTimeline.map((item) => (
-            <article key={`${item.period}-${item.title}`} className="backstory-item">
-              <div className="backstory-item__header">
-                <span className="backstory-item__icon" aria-hidden="true">
-                  {item.icon}
-                </span>
-                <p className="backstory-item__period">{item.period}</p>
-              </div>
-              <h3 className="backstory-item__title">{item.title}</h3>
-              <p className="backstory-item__description">{item.description}</p>
-            </article>
-          ))}
-        </motion.section>
-
         <motion.div
           variants={itemVariants}
           className="flex flex-wrap justify-center gap-6"
@@ -231,6 +216,21 @@ const App = () => {
             </svg>
           </motion.a>
         </motion.div>
+
+        <motion.section variants={itemVariants} className="backstory-timeline" aria-label="Backstory timeline">
+          {backstoryTimeline.map((item) => (
+            <article key={`${item.period}-${item.title}`} className="backstory-item">
+              <div className="backstory-item__header">
+                <span className="backstory-item__icon" aria-hidden="true">
+                  {item.icon}
+                </span>
+                <p className="backstory-item__period">{item.period}</p>
+              </div>
+              <h3 className="backstory-item__title">{item.title}</h3>
+              <p className="backstory-item__description">{item.description}</p>
+            </article>
+          ))}
+        </motion.section>
       </motion.div>
       <footer className="landing-footer">
         <p>© 2026 Aime Cesaire Mugishawayo</p>
