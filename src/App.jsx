@@ -7,6 +7,44 @@ import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
 import cesaireImage from "../cesaire.jpg"
 
+const backstoryTimeline = [
+  {
+    period: "Childhood",
+    title: "The 30-Minute Walk",
+    description:
+      "Every day after school, I'd walk 30 minutes to the nearest cybercafe, clutching 100 Rwandan francs-just enough for 10 precious minutes at a computer. Those minutes felt like hours as I explored a world beyond my own, sparking a curiosity that would shape my future.",
+    icon: "🚶",
+  },
+  {
+    period: "Early Teens",
+    title: "The Fixer",
+    description:
+      "As my fascination grew, I became the neighborhood's go-to person for computer problems. Fixing hardware, troubleshooting software, and helping others navigate technology taught me that computers weren't just tools-they were puzzles waiting to be solved.",
+    icon: "🔧",
+  },
+  {
+    period: "High School",
+    title: "The Hardest First Step",
+    description:
+      "I discovered programming through C++-arguably the toughest language to start with, but I wouldn't have it any other way. Learning memory management, pointers, and low-level concepts early built a foundation that made everything else feel easier. It was like learning to drive in a manual transmission car.",
+    icon: "💻",
+  },
+  {
+    period: "High School",
+    title: "Building & Leading",
+    description:
+      "In high school, I dove deep into mathematics and computer science. I co-founded the IT club, where we built websites and developed a canteen management app that actually served our school. Those projects taught me that code could solve real problems and impact real people.",
+    icon: "🏗️",
+  },
+  {
+    period: "College",
+    title: "Amherst & Beyond",
+    description:
+      "At Amherst College, I pursued Computer Science and Mathematics, interning with Amherst IT where I worked on systems that served the entire campus. I graduated with distinction, but more importantly, I learned that the journey from that cybercafe walk to building enterprise systems was just the beginning.",
+    icon: "🎓",
+  },
+]
+
 const App = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 
@@ -88,14 +126,20 @@ const App = () => {
           Building intelligent systems, secure infrastructure, and resilient code
         </motion.p>
 
-        <motion.p
-          variants={itemVariants}
-          className="text-base md:text-lg mb-10 max-w-3xl mx-auto"
-          style={{ color: "var(--color-text-light)" }}
-        >
-          Backstory: I started by solving reliability problems in real operations environments, then expanded into AI,
-          security, and systems engineering where software has to perform under pressure.
-        </motion.p>
+        <motion.section variants={itemVariants} className="backstory-timeline" aria-label="Backstory timeline">
+          {backstoryTimeline.map((item) => (
+            <article key={`${item.period}-${item.title}`} className="backstory-item">
+              <div className="backstory-item__header">
+                <span className="backstory-item__icon" aria-hidden="true">
+                  {item.icon}
+                </span>
+                <p className="backstory-item__period">{item.period}</p>
+              </div>
+              <h3 className="backstory-item__title">{item.title}</h3>
+              <p className="backstory-item__description">{item.description}</p>
+            </article>
+          ))}
+        </motion.section>
 
         <motion.div
           variants={itemVariants}
