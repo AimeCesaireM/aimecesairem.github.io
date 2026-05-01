@@ -11,8 +11,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet" />
-    <script type="module" crossorigin src="/assets/index-e9e742be.js"></script>
-    <link rel="stylesheet" href="/assets/index-60dc9006.css">
+    <script>
+      (function () {
+        try {
+          var s = localStorage.getItem('theme');
+          var t = (s === 'light' || s === 'dark') ? s
+            : (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script>
+    <script type="module" crossorigin src="/assets/index-80f89d43.js"></script>
+    <link rel="stylesheet" href="/assets/index-52e2efa1.css">
   </head>
   <body>
     <div id="root"></div>
