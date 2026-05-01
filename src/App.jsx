@@ -5,6 +5,7 @@
 
 import { motion } from "framer-motion"
 import cesaireImage from "../cesaire.jpg"
+import useTheme from "./hooks/useTheme"
 
 const backstory = [
   {
@@ -57,8 +58,19 @@ const item = {
 }
 
 const App = () => {
+  const { theme, toggle } = useTheme()
+
   return (
     <div className="landing-shell">
+      <button
+        className="theme-toggle landing-theme-toggle"
+        onClick={toggle}
+        aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+        title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+      >
+        <span className="theme-toggle__icon" aria-hidden="true" />
+      </button>
+
       <motion.div
         variants={container}
         initial="hidden"

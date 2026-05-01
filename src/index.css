@@ -15,6 +15,18 @@
   --font:           'Bricolage Grotesque', system-ui, sans-serif;
 }
 
+/* ─── Light mode ─────────────────────────────────────────────────── */
+[data-theme="light"] {
+  --bg:             oklch(98% 0.006 85);
+  --surface:        oklch(94% 0.008 85);
+  --surface-raised: oklch(88% 0.010 80);
+  --border:         oklch(80% 0.012 78);
+  --text:           oklch(14% 0.015 50);
+  --text-muted:     oklch(40% 0.014 55);
+  --accent:         oklch(40% 0.190 62);
+  --accent-dim:     oklch(60% 0.140 62);
+}
+
 /* ─── Reset ───────────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -254,9 +266,78 @@ a { color: inherit; text-decoration: none; transition: color 160ms ease; }
   .backstory__entry { grid-template-columns: 3.8rem 1fr; gap: 0.9rem; }
 }
 
+/* ─── Theme toggle ────────────────────────────────────────────────── */
+.theme-toggle {
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0.3rem;
+  cursor: pointer;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: color 140ms ease;
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.theme-toggle:hover { color: var(--accent); }
+
+.theme-toggle__icon {
+  display: block;
+  width: 0.88rem;
+  height: 0.88rem;
+  border-radius: 50%;
+  border: 1.5px solid currentColor;
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-toggle__icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: currentColor;
+  transition: left 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-theme="light"] .theme-toggle__icon::before { left: 50%; }
+
+/* Toggle fixed position for landing page */
+.landing-theme-toggle {
+  position: fixed;
+  top: 1.2rem;
+  right: 1.5rem;
+  z-index: 30;
+}
+
+/* ─── Smooth mode transition ──────────────────────────────────────── */
+html.theme-transitioning *,
+html.theme-transitioning *::before,
+html.theme-transitioning *::after {
+  transition:
+    background-color 280ms cubic-bezier(0.22, 1, 0.36, 1),
+    color            280ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color     280ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+html.theme-transitioning .theme-toggle__icon::before {
+  transition: left 260ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
+  }
+  html.theme-transitioning *,
+  html.theme-transitioning *::before,
+  html.theme-transitioning *::after {
+    transition: none !important;
   }
 }
